@@ -15,7 +15,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = prompt(`Please input "${rock}", "${paper}", or ${scissors}: `, "rock");
+    let choice = prompt(`Please input "${rock}", "${paper}", or ${scissors}: `, getComputerChoice());
     choice = choice.toLowerCase();
     if (choice === rock || choice === paper || choice === scissors) {
         return choice;
@@ -25,40 +25,33 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     // determine winner
-    // winner -1: human
+    // winner  1: human
     // winner  0: tie
-    // winner  1: computer
+    // winner -1: computer
     let winner = 0;
-    switch ([humanChoice, computerChoice]) {
-        case [rock, rock]:
-            winner = 0;
+
+    switch (humanChoice) {
+        case rock:
+            switch (computerChoice) {
+                case rock:     winner = 0;  break;
+                case paper:    winner = -1; break;
+                case scissors: winner = 1;  break;
+            }
             break;
-        case [rock, paper]:
-            winner = 1;
+        case paper:
+            switch (computerChoice) {
+                case rock:     winner = 1;  break;
+                case paper:    winner = 0;  break;
+                case scissors: winner = -1; break;
+            }
             break;
-        case [rock, scissors]:
-            winner = -1;
+        case scissors:
+            switch (computerChoice) {
+                case rock:     winner = -1; break;
+                case paper:    winner = 1;  break;
+                case scissors: winner = 0;  break;
+            }
             break;
-        case [paper, paper]:
-            winner = 0;
-            break;
-        case [paper, rock]:
-            winner = -1;
-            break;
-        case [paper, scissors]:
-            winner = 1;
-            break;
-        case [scissors, scissors]:
-            winner = 0;
-            break;
-        case [scissors, rock]:
-            winner = 1;
-            break;
-        case [scissors, paper]:
-            winner = -1;
-            break;
-        default:
-            winner = 0;
     }
 
     // print winning line and update score
@@ -84,7 +77,7 @@ function playGame(numberOfRounds = 5) {
     computerScore = 0;
 
     for (let i = 0; i < numberOfRounds; i++) {
-        playRound(humanChoice(), computerChoice());
+        playRound(getHumanChoice(), getComputerChoice());
     }
 
     // winning message
@@ -99,9 +92,9 @@ function playGame(numberOfRounds = 5) {
 
 playGame();
 
-module.exports = {
-    getComputerChoice,
-    getHumanChoice,
-    playRound,
-    playGame
-}
+// module.exports = {
+//     getComputerChoice,
+//     getHumanChoice,
+//     playRound,
+//     playGame
+// }
