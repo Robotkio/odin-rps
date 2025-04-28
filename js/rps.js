@@ -24,10 +24,10 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    const usr = 1;  // human
-    const cpu = -1; // computer
-    const tie = 0;  // tie
-    let winner = 0;
+    const usr = 1;    // human
+    const cpu = -1;   // computer
+    const tie = 0;    // tie
+    let winner = tie; // default state
 
     switch (humanChoice) {
         case rock:
