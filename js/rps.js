@@ -24,46 +24,45 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    // determine winner
-    // winner  1: human
-    // winner  0: tie
-    // winner -1: computer
+    const usr = 1;  // human
+    const cpu = -1; // computer
+    const tie = 0;  // tie
     let winner = 0;
 
     switch (humanChoice) {
         case rock:
             switch (computerChoice) {
-                case rock:     winner = 0;  break;
-                case paper:    winner = -1; break;
-                case scissors: winner = 1;  break;
+                case rock:     winner = tie; break;
+                case paper:    winner = cpu; break;
+                case scissors: winner = usr; break;
             }
             break;
         case paper:
             switch (computerChoice) {
-                case rock:     winner = 1;  break;
-                case paper:    winner = 0;  break;
-                case scissors: winner = -1; break;
+                case rock:     winner = usr; break;
+                case paper:    winner = tie; break;
+                case scissors: winner = cpu; break;
             }
             break;
         case scissors:
             switch (computerChoice) {
-                case rock:     winner = -1; break;
-                case paper:    winner = 1;  break;
-                case scissors: winner = 0;  break;
+                case rock:     winner = cpu; break;
+                case paper:    winner = usr; break;
+                case scissors: winner = tie; break;
             }
             break;
     }
 
     // print winning line and update score
     switch (winner) {
-        case -1:
+        case usr:
             console.log(`Human wins! ${humanChoice} beats ${computerChoice}!`);
             humanScore++;
             break;
-        case 0:
+        case tie:
             console.log(`Tie! ${humanChoice} and ${computerChoice} are the same!`);
             break;
-        case 1:
+        case cpu:
             console.log(`Computer wins! ${computerChoice} beats ${humanChoice}!`);
             computerScore++;
             break;
