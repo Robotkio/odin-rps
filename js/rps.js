@@ -79,14 +79,25 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
+function playGame(numberOfRounds = 5) {
     humanScore = 0;
     computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < numberOfRounds; i++) {
         playRound(humanChoice(), computerChoice());
     }
+
+    // winning message
+    if (humanScore > computerScore) {
+        console.log(`Human wins! ${humanScore} to ${computerScore}`);
+    } else if (computerScore > humanScore) {
+        console.log(`Computer wins! ${computerScore} to ${humanScore}`);
+    } else {
+        console.log(`A tie! ${humanScore} to ${computerScore}`);
+    }
 }
+
+playGame();
 
 module.exports = {
     getComputerChoice,
