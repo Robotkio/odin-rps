@@ -5,6 +5,16 @@ const scissors = "scissors";
 let humanScore = 0;
 let computerScore = 0;
 
+function setupGame() {
+    let btnRock = document.getElementById("btn-rock");
+    let btnPaper = document.getElementById("btn-paper");
+    let btnScissors = document.getElementById("btn-scissors");
+
+    btnRock.addEventListener("click", () => {playRound(rock, getComputerChoice())});
+    btnPaper.addEventListener("click", () => {playRound(paper, getComputerChoice())});
+    btnScissors.addEventListener("click", () => {playRound(scissors, getComputerChoice())});
+}
+
 function getComputerChoice() {
     switch (Math.floor(Math.random() * 3)) {
         case 0: return rock;
@@ -85,7 +95,7 @@ function playGame(numberOfRounds = 5) {
     }
 }
 
-playGame();
+setupGame();
 
 // module.exports = {
 //     getComputerChoice,
