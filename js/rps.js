@@ -5,6 +5,8 @@ const scissors = "scissors";
 let humanScore = 0;
 let computerScore = 0;
 
+let resultPannel = document.getElementById("rps-results");
+
 function setupGame() {
     let btnRock = document.getElementById("btn-rock");
     let btnPaper = document.getElementById("btn-paper");
@@ -63,22 +65,30 @@ function playRound(humanChoice, computerChoice) {
             break;
     }
 
+    let outputMessage = document.createElement("div");
+    outputMessage.classList.add("output-msg");
+
     // print winning line and update score
     switch (winner) {
         case usr:
-            console.log(`Human wins! ${humanChoice} beats ${computerChoice}!`);
+            outputMessage.innerText = `Human wins! ${humanChoice} beats ${computerChoice}!`;
+            outputMessage.classList.add("win");
             humanScore++;
             break;
         case tie:
-            console.log(`Tie! ${humanChoice} and ${computerChoice} are the same!`);
+            outputMessage.innerText = `Tie! ${humanChoice} and ${computerChoice} are the same!`;
+            outputMessage.classList.add("tie");
             break;
         case cpu:
-            console.log(`Computer wins! ${computerChoice} beats ${humanChoice}!`);
+            outputMessage.innerText = `Computer wins! ${computerChoice} beats ${humanChoice}!`;
+            outputMessage.classList.add("lose");
             computerScore++;
             break;
         default:
             console.log("ERROR: playRound()");
     }
+
+    resultPannel.appendChild(outputMessage);
 }
 
 function playGame() {

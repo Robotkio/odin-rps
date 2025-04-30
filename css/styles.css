@@ -1,3 +1,15 @@
 body {
     background-color: grey;
 }
+
+.output-msg {
+    font-family:'Courier New', Courier, monospace;
+}
+
+.win {
+    color: darkgreen;
+}
+
+.lose {
+    color: maroon;
+}
