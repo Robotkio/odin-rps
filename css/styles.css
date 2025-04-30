@@ -2,7 +2,7 @@ body {
     background-color: grey;
 }
 
-.output-msg {
+#rps-status, .output-msg {
     font-family:'Courier New', Courier, monospace;
 }
 

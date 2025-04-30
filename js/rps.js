@@ -4,8 +4,9 @@ const scissors = "scissors";
 
 let humanScore = 0;
 let computerScore = 0;
-let roundNumber = 1;
+let roundNumber = 0;
 
+let statusPannel = document.getElementById("rps-status");
 let resultPannel = document.getElementById("rps-results");
 
 function setupGame() {
@@ -16,6 +17,8 @@ function setupGame() {
     btnRock.addEventListener("click", () => {playRound(rock, getComputerChoice())});
     btnPaper.addEventListener("click", () => {playRound(paper, getComputerChoice())});
     btnScissors.addEventListener("click", () => {playRound(scissors, getComputerChoice())});
+
+    updateStatusPannel();
 }
 
 function getComputerChoice() {
@@ -28,11 +31,14 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    roundNumber++;
+
     const usr = 1;    // human
     const cpu = -1;   // computer
     const tie = 0;    // tie
     let winner = tie; // default state
 
+    // determine winner
     switch (humanChoice) {
         case rock:
             switch (computerChoice) {
@@ -57,10 +63,9 @@ function playRound(humanChoice, computerChoice) {
             break;
     }
 
+    // print winning line and update score
     let outputMessage = document.createElement("div");
     outputMessage.classList.add("output-msg");
-
-    // print winning line and update score
     switch (winner) {
         case usr:
             outputMessage.innerText = `Human wins! ${humanChoice} beats ${computerChoice}!`;
@@ -79,8 +84,12 @@ function playRound(humanChoice, computerChoice) {
         default:
             console.log("ERROR: playRound()");
     }
-
     resultPannel.appendChild(outputMessage);
+    updateStatusPannel();
+}
+
+function updateStatusPannel() {
+    statusPannel.innerText = `Round[${roundNumber}] Wins[User:${humanScore} Computer:${computerScore}]`;
 }
 
 setupGame();
