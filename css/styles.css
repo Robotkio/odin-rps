@@ -13,3 +13,8 @@ body {
 .lose {
     color: maroon;
 }
+
+.game-win, .game-lose, .game-tie {
+    font-size: 20;
+    font-weight: 900;
+}
