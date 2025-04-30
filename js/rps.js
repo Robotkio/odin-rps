@@ -75,10 +75,6 @@ function playGame(numberOfRounds = 5) {
     humanScore = 0;
     computerScore = 0;
 
-    for (let i = 0; i < numberOfRounds; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
-    }
-
     // winning message
     if (humanScore > computerScore) {
         console.log(`Human wins! ${humanScore} to ${computerScore}`);
