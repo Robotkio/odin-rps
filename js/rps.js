@@ -81,7 +81,7 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame(numberOfRounds = 5) {
+function playGame() {
     humanScore = 0;
     computerScore = 0;
 
