@@ -4,6 +4,7 @@ const scissors = "scissors";
 
 let humanScore = 0;
 let computerScore = 0;
+let roundNumber = 1;
 
 let resultPannel = document.getElementById("rps-results");
 
@@ -24,15 +25,6 @@ function getComputerChoice() {
         case 2: return scissors;
         default: return "ERROR: getComputerChoice()";
     }
-}
-
-function getHumanChoice() {
-    let choice = prompt(`Please input "${rock}", "${paper}", or "${scissors}": `, getComputerChoice());
-    choice = choice.toLowerCase();
-    if (choice === rock || choice === paper || choice === scissors) {
-        return choice;
-    }
-    return "ERROR: getHumanChoice()";
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -89,20 +81,6 @@ function playRound(humanChoice, computerChoice) {
     }
 
     resultPannel.appendChild(outputMessage);
-}
-
-function playGame() {
-    humanScore = 0;
-    computerScore = 0;
-
-    // winning message
-    if (humanScore > computerScore) {
-        console.log(`Human wins! ${humanScore} to ${computerScore}`);
-    } else if (computerScore > humanScore) {
-        console.log(`Computer wins! ${computerScore} to ${humanScore}`);
-    } else {
-        console.log(`A tie! ${humanScore} to ${computerScore}`);
-    }
 }
 
 setupGame();
