@@ -93,10 +93,3 @@ function updateStatusPannel() {
 }
 
 setupGame();
-
-// module.exports = {
-//     getComputerChoice,
-//     getHumanChoice,
-//     playRound,
-//     playGame
-// }
